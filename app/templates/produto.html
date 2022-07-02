@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="{% static 'img/core-img/hamburger.png' %}" alt="">
+    </div>
+
+    <div class="search-wrapper">
+        <div class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <form action="#" method="post">
+                        <input type="search" name="search" placeholder="O que está procurando...">
+                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'partials/menu.html' %}       
+        <div class="produto-content-area">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div class="produto-headline my-5">
+                            <span>{{produto.data_produto}}</span>
+                            <h2>{{produto.nome_produto}}</h2>
+                            <div class="produto-duration">
+                                <h6>RS {{produto.valor}}</h6>
+                                <h6>Categoria: {{produto.categoria}}</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <h4>Ingredientes</h4>
+                        <div class="single-preparation-step d-flex">
+                            <p>{{produto.ingredientes}}</p>
+                        </div>
+                        <div>
+                            <img src="{% static produto.imagem.url %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                
+            {% include 'partials/footer.html' %}
+{% endblock %}

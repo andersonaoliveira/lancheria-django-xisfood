@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="{% static 'img/core-img/hamburger.png' %}" alt="">
+    </div>
+    <div class="search-wrapper">
+        <div class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <form action="#" method="post">
+                        <input type="search" name="search" placeholder="O que está procurando...">
+                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'partials/menu.html' %}
+        <div class="produto-post-search mb-80">
+            <div class="container">
+                <form action="{% url 'cardapio' %}" method="get">
+                    <div class="row">
+                        <div class="col-12 col-lg-5">
+                            <select name="selecionado" id="selecionado">
+                                <option value="0">Todas Categorias</option>
+                                <option value="1">Lanches Salgados</option>
+                                <option value="2">Pizzas</option>
+                                <option value="3">Bebidas</option>
+                                <option value="4">Sobremesas</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-lg-2 text-right">
+                            <button type="submit" class="btn delicious-btn" >Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="produto-content-area">
+            <div class="container">
+            <h1>CARDÁPIO</h1>
+            <h4>Lanches Salgados</h4>
+            </div>
+            {% if request.get_full_path == '/cardapio?selecionado=0' %}
+                {% include 'partials/lanches_salgados.html' %}
+            {% elif request.get_full_path == '/cardapio?selecionado=1'%}
+                {% include 'partials/lanches_salgados.html' %}
+            {% elif request.get_full_path == '/cardapio'%}
+                {% include 'partials/lanches_salgados.html' %}
+            {% endif %}
+            <div class="container">
+            <h4>Pizzas</h4>
+            </div>
+            {% if request.get_full_path == '/cardapio?selecionado=0' %}
+                {% include 'partials/pizzas.html' %}
+            {% elif request.get_full_path == '/cardapio?selecionado=2'%}
+                {% include 'partials/pizzas.html' %}
+            {% elif request.get_full_path == '/cardapio'%}
+                {% include 'partials/pizzas.html' %}
+            {% endif %}
+            <div class="container">
+            <h4>Bebidas</h4>
+            </div>
+            {% if request.get_full_path == '/cardapio?selecionado=0' %}
+                {% include 'partials/bebidas.html' %}
+            {% elif request.get_full_path == '/cardapio?selecionado=3'%}
+                {% include 'partials/bebidas.html' %}
+            {% elif request.get_full_path == '/cardapio'%}
+                {% include 'partials/bebidas.html' %}
+            {% endif %}
+            <div class="container">
+            <h4>Sobremesas</h4>
+            </div>
+            {% if request.get_full_path == '/cardapio?selecionado=0' %}
+                {% include 'partials/Sobremesas.html' %}
+            {% elif request.get_full_path == '/cardapio?selecionado=4'%}
+                {% include 'partials/Sobremesas.html' %}
+            {% elif request.get_full_path == '/cardapio'%}
+                {% include 'partials/Sobremesas.html' %}
+            {% endif %}
+            {% include 'partials/footer.html' %}
+{% endblock %}

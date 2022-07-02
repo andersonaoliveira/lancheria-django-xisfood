@@ -1,0 +1,23 @@
+{% load static %}
+{% if produtos %}
+{% for produto in produtos %}
+{% if produto.visivel == True %}
+{% if produto.categoria == '3'%}
+<div class="container">
+    <div class="row">                    
+        <div class="col-10 col-md-10">
+            <div class="produto-headline my-5">
+                <div class="produto-duration">
+                    <h6>{{produto.nome_produto}}</h6>
+                    <h6>RS {{produto.valor}}</h6>
+                    <p>{{produto.ingredientes}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+{% endfor %}
+{% else %}
+{% endif %}
